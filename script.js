@@ -54,7 +54,6 @@ function gerarLabirinto() {
     function esculpir(x, y) {
         visitado[y][x] = true;
         labirinto[y][x] = ' ';
-
         let listaVizinhos = obterVizinhos(x, y);
         while (listaVizinhos.length) {
             const idx = Math.floor(Math.random() * listaVizinhos.length);
@@ -65,10 +64,7 @@ function gerarLabirinto() {
             }
         }
     }
-
     esculpir(1, 1);
-
-    // Define a saída do labirinto
     labirinto[posSaidaY][posSaidaX] = 'S';
 }
 
@@ -121,12 +117,10 @@ document.addEventListener("keydown", (evento) => {
         novoX++;
         console.log("Direita pressionada");
     }
-
     if (labirinto[novoY][novoX] !== "#") {
         posJogadorX = novoX;
         posJogadorY = novoY;
     }
-
     if (labirinto[posJogadorY][posJogadorX] === "S") {
         clearInterval(intervalo);
         const tempoFinal = (Date.now() - tempoInicio) / 1000;
@@ -136,11 +130,9 @@ document.addEventListener("keydown", (evento) => {
             melhorTempo = tempoFinal;
             document.getElementById("recorde").textContent = melhorTempo.toFixed(1);
         }
-
         vitorias++;
         reiniciar();
     }
-
     renderizar();
 });
 
